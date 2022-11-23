@@ -5,11 +5,32 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
   <title>Document</title>
 </head>
 
 <body>
+  <!-- 首頁區 -->
+  <div id="home">
+    <div id="container">
+      <div id="start">
+        <h1>塔羅牌遊戲</h1>
+        <button id="startBtn" type="button">開始遊戲</button>
+      </div>
+    </div>
+  </div>
 
+  <!-- 遊戲區 -->
+  <div id="game" style="display: none;">
+    <button id="backHome" type="button">首頁</button>
+    <div id="gameBox"></div>
+  </div>
+
+  <!-- 遊戲結束區 -->
+  <div id="gameEnd" style="display: none;"></div>
+  <script src="./js/jquery-3.6.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="./js/tarot_game.js"></script>
 </body>
 
 </html>

@@ -7,6 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      transition: transform 1s;
+    }
+
     .card {
       width: 150px;
       height: 250px;
@@ -49,8 +60,12 @@
     }
 
     #game {
-      width: 100%;
+      width: 80%;
       height: 100vh;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
     }
   </style>
 </head>
@@ -61,7 +76,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     // 產生卡片
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 12; i++) {
       $('#game').append(`
       <div class="card card-close">
         <div class="card-front"></div>
@@ -88,7 +103,9 @@
 
       // 如果翻兩張了
       if ($('.card:not(.card-close)').length === 2) {
+        // 如果數字一樣
         if ($('.card:not(.card-close)').eq(0).attr('data-num') === $('.card:not(.card-close)').eq(1).attr('data-num')){
+          // 用 card-ok 標記已完成
           $('.card:not(.card-close)').addClass('card-ok')
           $('.card:not(.card-close)').fadeTo(1000, 0)
         }
