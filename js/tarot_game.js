@@ -3,7 +3,7 @@ $('#startBtn').on('click', function () {
   $('#home').hide()
   $('#game').show()
   resetCard()
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 18; i++) {
     $('#gameBox').append(`
     <div class="card card-close">
       <div class="card-front"></div>
@@ -35,6 +35,7 @@ $('.backHome').on('click', function () {
 const resetCard = () => {
   $('#gameBox').html('')
   $('#tarotGameBox').html('')
+  $('#tarotShow').html('')
 }
 
 $('#game').on('click', '.card', function () {
@@ -70,33 +71,58 @@ $('#game').on('click', '.card', function () {
   }
 })
 
+// 塔羅抽牌區
 $('#tarotBtn').on('click', function () {
   $('#home').hide()
   $('#tarot').show()
-  resetCard()
+  // resetCard()
   const aaa = 4;
   for (let i = 0; i < 22; i++) {
 
     $('#tarotGameBox').append(`
-    <div class="card card-close position" style="left: ${(i + 4) * 3}%;z-index: 0;">
-      <div class="card-front"></div>
-      <div class="card-back"></div>
+    <div class="card card-close position" style="left: ${(i + 11) * 2}%;">
+    <div class="card-back"></div>
     </div>
   `)
-  }
-  for (let i = 0; i < $('.card').length; i++) {
-    // 決定數字
+
     const num = i % ($('.card').length)
     $('.card').eq(i).find('.card-front').css('background-image', `url(./images/${num}.jpg)`)
     $('.card').eq(i).attr('data-num', num)
-    
-    // 打散
-    const target = Math.round(Math.random() * ($('.card').length))
-    $('.card').eq(target).insertAfter($('.card').eq(i))
-    // $('.card').eq(i).attr('style', `z-index: ${(i + 4) * 3};`)
-    console.log(target)
   }
 })
+
+
+
+$('#selectCard').on('click', function () {
+  $('#tarotShow').html('')
+  for (let i = 0; i < 6; i++) {
+    $('#tarotShow').append(`
+    <div class="card">
+      <div class="card-front"></div>
+    </div>
+  `)
+  }
+  for (let i = 22; i < 28; i++) {
+    let card = getRandom(22)
+    let info = ''
+    if (card === info) {
+      return
+    } else {
+      info = card
+    }
+    console.log(info)
+    $('.card').eq(i).find('.card-front').css('background-image', `url(./images/${info}.jpg)`)
+  }
+})
+
+
+// 隨機取數字
+const getRandom = (max) => {
+  return Math.floor(Math.random() * max);
+}
+
+
+
 
 document.onkeydown = (event) => {
   if (event.code === 'Space') {
