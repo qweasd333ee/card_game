@@ -2,7 +2,7 @@
 $('#startBtn').on('click', function () {
   $('#home').hide()
   $('#game').show()
-  $('#backHome').show()
+  resetCard()
   for (let i = 0; i < 2; i++) {
     $('#gameBox').append(`
     <div class="card card-close">
@@ -23,14 +23,18 @@ $('#startBtn').on('click', function () {
   }
 })
 
-$('#backHome').on('click', function () {
+// 首頁按鈕
+$('.backHome').on('click', function () {
   $('#game').hide()
+  $('#tarot').hide()
   $('#home').show()
   resetCard()
 })
 
+// 重製遊戲區、塔羅抽取區卡牌
 const resetCard = () => {
   $('#gameBox').html('')
+  $('#tarotGameBox').html('')
 }
 
 $('#game').on('click', '.card', function () {
@@ -66,12 +70,38 @@ $('#game').on('click', '.card', function () {
   }
 })
 
+$('#tarotBtn').on('click', function () {
+  $('#home').hide()
+  $('#tarot').show()
+  resetCard()
+  const aaa = 4;
+  for (let i = 0; i < 22; i++) {
 
+    $('#tarotGameBox').append(`
+    <div class="card card-close position" style="left: ${(i + 4) * 3}%;z-index: 0;">
+      <div class="card-front"></div>
+      <div class="card-back"></div>
+    </div>
+  `)
+  }
+  for (let i = 0; i < $('.card').length; i++) {
+    // 決定數字
+    const num = i % ($('.card').length)
+    $('.card').eq(i).find('.card-front').css('background-image', `url(./images/${num}.jpg)`)
+    $('.card').eq(i).attr('data-num', num)
+    
+    // 打散
+    const target = Math.round(Math.random() * ($('.card').length))
+    $('.card').eq(target).insertAfter($('.card').eq(i))
+    // $('.card').eq(i).attr('style', `z-index: ${(i + 4) * 3};`)
+    console.log(target)
+  }
+})
 
 document.onkeydown = (event) => {
   if (event.code === 'Space') {
     $('#home').hide();
     $('#game').hide();
-    $('#gameEnd').show();
+    $('#tarot').show()
   }
 };

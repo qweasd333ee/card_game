@@ -46,6 +46,7 @@
   border-radius: 1rem;
   font-weight: 400;
   border: 3px solid black;
+  margin-bottom: 0.5rem;
 }
 
 #start button:hover {
@@ -75,7 +76,7 @@
   flex-direction: row;
 }
 
-#backHome {
+.backHome {
   width: 8%;
   height: 8%;
   font-size: 1.5rem;
@@ -87,7 +88,7 @@
   right: 2%;
 }
 
-#backHome:hover {
+.backHome:hover {
   background: black;
   color: white;
   border: 3px solid white;
@@ -131,8 +132,31 @@
   backface-visibility: hidden;
 }
 
-.card-close {
+/* .card-close {
   transform: rotateY(180deg);
+} */
+
+/* 塔羅抽取區 */
+#tarot {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: darkmagenta;
+}
+
+#tarotGameBox {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.position {
+  position: absolute;
+  z-index: 100;
 }
 
 /* 遊戲結束區 */
