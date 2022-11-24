@@ -102,27 +102,25 @@ $('#selectCard').on('click', function () {
     </div>
   `)
   }
+
+  let randomNum = getRandomNum(22, 6)
   for (let i = 22; i < 28; i++) {
-    let card = getRandom(22)
-    let info = ''
-    if (card === info) {
-      return
-    } else {
-      info = card
-    }
-    console.log(info)
-    $('.card').eq(i).find('.card-front').css('background-image', `url(./images/${info}.jpg)`)
+    $('.card').eq(i).find('.card-front').css('background-image', `url(./images/${randomNum[i - 22]}.jpg)`)
   }
 })
 
-
-// 隨機取數字
-const getRandom = (max) => {
-  return Math.floor(Math.random() * max);
+const getRandomNum = (max, num) => {
+  let arr = [];
+  for (let i = 0; i < num; i++) {
+    let number = Math.floor(Math.random() * max);
+    if (arr.indexOf(number) === -1) {
+      arr.push(number);
+    } else {
+      i--;
+    }
+  }
+  return arr;
 }
-
-
-
 
 document.onkeydown = (event) => {
   if (event.code === 'Space') {
