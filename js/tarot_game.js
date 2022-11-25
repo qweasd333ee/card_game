@@ -3,7 +3,7 @@ $('#startBtn').on('click', function () {
   $('#home').hide()
   $('#game').show()
   resetCard()
-  for (let i = 0; i < 18; i++) {
+  for (let i = 0; i < 12; i++) {
     $('#gameBox').append(`
     <div class="card card-close">
       <div class="card-front"></div>
@@ -75,10 +75,8 @@ $('#game').on('click', '.card', function () {
 $('#tarotBtn').on('click', function () {
   $('#home').hide()
   $('#tarot').show()
-  // resetCard()
-  const aaa = 4;
+  resetCard()
   for (let i = 0; i < 22; i++) {
-
     $('#tarotGameBox').append(`
     <div class="card card-close position" style="left: ${(i + 11) * 2}%;">
     <div class="card-back"></div>
@@ -92,7 +90,7 @@ $('#tarotBtn').on('click', function () {
 })
 
 
-
+// 抽卡按鈕
 $('#selectCard').on('click', function () {
   $('#tarotShow').html('')
   for (let i = 0; i < 6; i++) {
@@ -109,6 +107,7 @@ $('#selectCard').on('click', function () {
   }
 })
 
+// 隨機數字
 const getRandomNum = (max, num) => {
   let arr = [];
   for (let i = 0; i < num; i++) {
@@ -121,6 +120,22 @@ const getRandomNum = (max, num) => {
   }
   return arr;
 }
+
+$('#tarotShow').on('mouseover', '.card-front', function () {
+  for (let i = 0; i < 22; i++) {
+    if ($(this).attr('style') === `background-image: url("./images/${i}.jpg");`) {
+      $(`#tarotInfo${i}`).show()
+    }
+  }
+})
+
+$('#tarotShow').on('mouseout', '.card-front', function () {
+  for (let i = 0; i < 22; i++) {
+    if ($(this).attr('style') === `background-image: url("./images/${i}.jpg");`) {
+      $(`#tarotInfo${i}`).hide()
+    }
+  }
+})
 
 document.onkeydown = (event) => {
   if (event.code === 'Space') {

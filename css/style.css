@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
 }
+
 /* 首頁區 */
 #home {
   width: 100%;
@@ -9,7 +10,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background: darkmagenta;
+  background: url('../images/bg7.jpeg') no-repeat center / 100% 100%;
+  transition: all 1s;
 }
 
 #container {
@@ -23,37 +25,51 @@
 }
 
 #start {
-  width: 500px;
-  height: 200px;
-  border: 5px solid black;
+  width: 30rem;
+  height: 30rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  padding: 20px;
+  border-radius: 30rem;
+  padding: 80px;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 #start h1 {
-  font-size: 4rem;
-  margin-bottom: 20px;
+  font-size: 5rem;
+  font-weight: 400;
+  font-family: "辰宇落雁體";
+  color: rgb(255, 255, 255);
+  margin-bottom: 2rem;
 }
 
-#start button {
-  width: 80%;
-  height: 50%;
-  font-size: 2rem;
+.buttonStyle {
+  width: 50%;
+  height: 18%;
+  font-size: 3rem;
+  border: 1px solid rgb(255, 255, 255);
   border-radius: 1rem;
   font-weight: 400;
-  border: 3px solid black;
-  margin-bottom: 0.5rem;
+  background: transparent;
+  margin-bottom: 2rem;
+  font-family: "辰宇落雁體";
+  color: white;
 }
 
-#start button:hover {
-  background: black;
+.buttonStyle:hover {
+  background: rgba(0, 0, 0, 0.5);
   color: white;
-  border: 3px solid white;
-  transition: 0.2s;
+  /* border: 3px solid rgba(255, 255, 255, 0.5); */
+  transition: 0.1s;
+  transform: scale(1.05);
+  cursor: pointer;
+  animation: a1 3.5s infinite linear alternate;
+}
+
+.buttonStyle:active {
+  transform: scale(1);
+  text-shadow: inset 0 0 10px 1px rgba(0, 0, 0, .1);
 }
 
 /* 遊戲區域 */
@@ -63,7 +79,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background: darkmagenta;
+  background: url('../images/bg7.jpeg') no-repeat center / 100% 100%;
 }
 
 #gameBox {
@@ -79,20 +95,10 @@
 .backHome {
   width: 8%;
   height: 8%;
-  font-size: 1.5rem;
-  border-radius: 1rem;
-  font-weight: 400;
-  border: 3px solid black;
+  font-size: 2.5rem;
   position: absolute;
   top: 2%;
   right: 2%;
-}
-
-.backHome:hover {
-  background: black;
-  color: white;
-  border: 3px solid white;
-  transition: 0.2s;
 }
 
 .card {
@@ -122,7 +128,9 @@
 .card-back {
   width: 100%;
   height: 100%;
-  background-image: url(../images/back.png);
+  background-image: url(../images/back2.jpeg);
+  border-radius: 10px;
+  border: 3px solid rgba(79, 77, 65, 1);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -144,7 +152,7 @@
   flex-wrap: wrap;
   justify-content: center;
   flex-direction: column;
-  background: darkmagenta;
+  background: url('../images/bg7.jpeg') no-repeat center / 100% 100%;
 }
 
 #tarotGameBox {
@@ -166,20 +174,10 @@
 #selectCard {
   width: 8%;
   height: 8%;
-  font-size: 1.5rem;
-  border-radius: 1rem;
-  font-weight: 400;
-  border: 3px solid black;
+  font-size: 2.5rem;
   position: absolute;
   top: 44%;
   right: 45%;
-}
-
-#selectCard:hover {
-  background: black;
-  color: white;
-  border: 3px solid white;
-  transition: 0.2s;
 }
 
 .position {
@@ -192,6 +190,29 @@
   transition: 0.2s;
 }
 
+.tarotStyle {
+  width: 50rem;
+  height: 30rem;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: black;
+  color: white;
+  font-family: "辰宇落雁體";
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  border: 3px solid white;
+}
+
+.tarotStyle h1 {
+  font-size: 40px;
+}
+
+.tarotStyle p {
+  font-size: 24px;
+}
+
 /* 遊戲結束區 */
 #gameEnd {
   width: 100%;
@@ -200,4 +221,31 @@
   flex-wrap: wrap;
   justify-content: center;
   background: darkmagenta;
+}
+
+@keyframes a1 {
+  0% {
+    text-shadow: 0 0 5px rgb(186, 15, 248), 0 0 15px rgb(186, 15, 248), 0 0 25px rgb(186, 15, 248);
+    /* box-shadow: 0 0 5px rgb(186, 15, 248), 0 0 15px rgb(186, 15, 248), 0 0 25px rgb(186, 15, 248); */
+  }
+
+  20% {
+    text-shadow: 0 0 5px rgb(248, 15, 42), 0 0 15px rgb(248, 15, 42), 0 0 25px rgb(248, 15, 42);
+    /* box-shadow: 0 0 5px rgb(248, 15, 42), 0 0 15px rgb(248, 15, 42), 0 0 25px rgb(248, 15, 42); */
+  }
+
+  60% {
+    text-shadow: 0 0 5px rgb(238, 255, 0), 0 0 15px rgb(238, 255, 0), 0 0 25px rgb(238, 255, 0);
+    /* box-shadow: 0 0 5px rgb(238, 255, 0), 0 0 15px rgb(238, 255, 0), 0 0 25px rgb(238, 255, 0); */
+  }
+
+  80% {
+    text-shadow: 0 0 5px rgb(27, 82, 248), 0 0 15px rgb(27, 82, 248), 0 0 25px rgb(27, 82, 248);
+    /* box-shadow: 0 0 5px rgb(27, 82, 248), 0 0 15px rgb(27, 82, 248), 0 0 25px rgb(27, 82, 248); */
+  }
+
+  100% {
+    text-shadow: 0 0 5px rgb(25, 255, 83), 0 0 15px rgb(25, 255, 83), 0 0 25px rgb(25, 255, 83);
+    /* box-shadow: 0 0 5px rgb(25, 255, 83), 0 0 15px rgb(25, 255, 83), 0 0 25px rgb(25, 255, 83); */
+  }
 }
