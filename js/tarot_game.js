@@ -3,6 +3,11 @@ $('#startBtn').on('click', function () {
   $('#home').hide()
   $('#game').show()
   resetCard()
+  point = 0
+  $('#point').text(point)
+  totalTime = 0
+  $('#time').text(totalTime);
+  clockOn()
   for (let i = 0; i < 12; i++) {
     $('#gameBox').append(`
     <div class="card card-close">
@@ -23,12 +28,46 @@ $('#startBtn').on('click', function () {
   }
 })
 
+let time = 0;
+let totalTime = 0
+let point = 0
+
+// 開啟計時
+clockOn = () => {
+  time = setInterval(() => {
+    totalTime++;
+    $('#time').text(totalTime);
+  }, 1000);
+}
+
+// 停止計時
+clockOff = () => {
+  clearInterval(time);
+}
+
+// 加分
+addPoints = () => {
+  point+=3
+  $('#point').text(point)
+}
+
+// 扣分
+deductPoints = () => {
+  if (point > 0) point--
+  else if (point = 0) point = 0
+  $('#point').text(point)
+}
+
+
 // 首頁按鈕
 $('.backHome').on('click', function () {
   $('#game').hide()
   $('#tarot').hide()
   $('#home').show()
+  clockOff()
   resetCard()
+  point = 0
+  $('#point').text(point)
 })
 
 // 重製遊戲區、塔羅抽取區卡牌
@@ -48,26 +87,30 @@ $('#game').on('click', '.card', function () {
   if ($('.card:not(.card-close)').length === 2) {
     // 如果數字一樣
     if ($('.card:not(.card-close)').eq(0).attr('data-num') === $('.card:not(.card-close)').eq(1).attr('data-num')) {
+      addPoints()
       // 用 card-ok 標記已完成
       $('.card:not(.card-close)').addClass('card-ok')
-      $('.card:not(.card-close)').fadeTo(1000, 0)
+      $('.card:not(.card-close)').fadeTo(500, 0)
+    } else {
+      deductPoints()
     }
 
     // 不管數字一不一樣都將卡片翻回來
     setTimeout(() => {
       $('.card:not(.card-close)').addClass('card-close')
       if ($('.card-ok').length === $('.card').length) {
+        clockOff()
         Swal.fire({
           icon: 'succedd',
           title: '恭喜',
-          text: '恭喜過關'
+          text: `恭喜過關，共花了${totalTime}秒，得分為${point}分！`
         }).then(function () {
           resetCard()
           $('#game').hide()
           $('#home').show()
         });
       }
-    }, 1000);
+    }, 500);
   }
 })
 
@@ -121,6 +164,7 @@ const getRandomNum = (max, num) => {
   return arr;
 }
 
+// 塔羅牌牌義-滑鼠滑入
 $('#tarotShow').on('mouseover', '.card-front', function () {
   for (let i = 0; i < 22; i++) {
     if ($(this).attr('style') === `background-image: url("./images/${i}.jpg");`) {
@@ -129,6 +173,7 @@ $('#tarotShow').on('mouseover', '.card-front', function () {
   }
 })
 
+// 塔羅牌牌義-滑鼠滑出
 $('#tarotShow').on('mouseout', '.card-front', function () {
   for (let i = 0; i < 22; i++) {
     if ($(this).attr('style') === `background-image: url("./images/${i}.jpg");`) {
@@ -136,11 +181,3 @@ $('#tarotShow').on('mouseout', '.card-front', function () {
     }
   }
 })
-
-document.onkeydown = (event) => {
-  if (event.code === 'Space') {
-    $('#home').hide();
-    $('#game').hide();
-    $('#tarot').show()
-  }
-};

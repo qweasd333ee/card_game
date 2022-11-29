@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/style.css">
-  <title>Document</title>
+  <title>塔羅牌小遊戲</title>
 </head>
 
 <body>
@@ -14,8 +14,8 @@
   <div id="home">
     <div id="container">
       <div id="start">
-        <h1>塔羅牌遊戲</h1>
-        <button id="startBtn" class="buttonStyle" type="button">開始遊戲</button>
+        <h1>塔羅牌小遊戲</h1>
+        <button id="startBtn" class="buttonStyle" type="button">翻牌遊戲</button>
         <button id="tarotBtn" class="buttonStyle" type="button">塔羅牌抽取</button>
       </div>
     </div>
@@ -24,6 +24,14 @@
   <!-- 翻牌遊戲區 -->
   <div id="game" style="display: none;">
     <button class="backHome buttonStyle" type="button">首頁</button>
+    <div id="timer">
+      <div id="timerText">時間</div>
+      <div id="time"></div>
+    </div>
+    <div id="pointer" >
+      <div id="pointerText">得分</div>
+      <div id="point"></div>
+    </div>
     <div id="gameBox"></div>
   </div>
 
