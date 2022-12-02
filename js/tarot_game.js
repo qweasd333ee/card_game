@@ -8,7 +8,7 @@ $('#startBtn').on('click', function () {
   totalTime = 0
   $('#time').text(totalTime);
   clockOn()
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 16; i++) {
     $('#gameBox').append(`
     <div class="card card-close">
       <div class="card-front"></div>
