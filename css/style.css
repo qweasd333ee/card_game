@@ -4,6 +4,12 @@
   transition: 1s;
 }
 
+@font-face {
+  font-family: "辰宇落雁體";
+  src: url('../font/ChenYuluoyan-Thin.ttf');
+  src: url('../font/ChenYuluoyan-Thin-Monospaced.ttf');
+}
+
 /* 首頁區 */
 #home {
   width: 100%;
